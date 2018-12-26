@@ -1,8 +1,8 @@
 library watson_assistant;
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:meta/meta.dart';
 
 class WatsonAssistantResult {
   String resultText;

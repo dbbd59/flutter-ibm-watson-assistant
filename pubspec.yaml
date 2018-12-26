@@ -1,7 +1,7 @@
 name: watson_assistant
 description: Unofficial implementation of IBM Watson Assistant API for Flutter.
 version: 0.0.1
-author: Davide Bolzoni
+author: Davide Bolzoni <davide.bolzoni59@gmail.com>
 homepage: https://github.com/dbbd59/flutter-ibm-watson-assistant
 
 environment:

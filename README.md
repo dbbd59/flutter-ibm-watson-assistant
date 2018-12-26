@@ -1,14 +1,37 @@
 # watson_assistant
 
-A new Flutter package project.
+Unofficial implementation of IBM Watson Assistant API for Flutter.
 
-## Getting Started
+## Usage
+To use this plugin, add `watson_assistant` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-This project is a starting point for a Dart
-[package](https://flutter.io/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+### Example
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+``` dart
+import 'package:watson_assistant/watson_assistant.dart';
+/* add async in your function */
+
+WatsonAssistantCredential credential = WatsonAssistantCredential(username: [USERNAME], password: [PASSWORD], workspaceId: [WORKSPACEID]);
+
+WatsonAssistantApiV1 watsonAssistant = WatsonAssistantApiV1(watsonAssistantCredential: credential);
+
+WatsonAssistantResult watsonAssistantResponse;
+
+/*First interaction*/
+watsonAssistantResponse = await watsonAssistant.sendMessage("Hello", watsonAssistantContext);  // context of the conversation initially void
+
+watsonAssistantContext = watsonAssistantResponse.context;        // to store the progress of the conversation
+print(watsonAssistantResponse.resultText);                       // -->  "Hi i'm Watson Assistant!"
+
+/*Second interaction*/
+watsonAssistantResponse = await watsonAssistant.sendMessage("what's the weather tomorrow?", watsonAssistantContext);
+
+watsonAssistantContext = watsonAssistantResponse.context;        // to store the progress of the conversation
+print(watsonAssistantResponse.resultText);                       // -->  "It will be sunny tomorrow"
+
+
+
+/*Reset the context*/
+watsonAssistantContext.resetContext();
+
+```
